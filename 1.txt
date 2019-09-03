@@ -1,0 +1,59 @@
+#include "global.h"
+
+enum{
+       NOKEY,
+       KEY7,
+       KEY6,
+       KEY5,
+       KEY4
+  };
+  
+  void ShortDelay(BYTE i)
+  {
+          while(i--);
+          
+  }
+  
+ void LongDelay(WORD i)
+ {
+            while(i--) { 
+                     ShortDelay(145);
+                     }
+  }
+  
+  void lnitial_CPU(void)
+  {
+        P0 = 0xff;
+        P1 = 0xff;
+        P2 = 0xff;
+        P3 = 0xff;
+   }
+   
+   BYTE GetPortKey(void)
+   {
+           BYTE value, KeyNo;
+           
+           value = P1;
+           
+           if(!(value& 0x80))
+                    KeyNo = KEY7;
+           else if (!(value& 0x40))
+                    KeyNo = KEY6;
+            else if (!(value& 0x20)) 
+                     KeyNo = KEY5;
+           else if (!(value& 0x10))
+                      KeyNo = KEY4;
+           else
+                     KeyNo = NOKEY;
+           
+           return KeyNO;
+    }
+    
+    void main(void)
+    {
+           
+            lnitial_CPU();
+            while(1){
+                 LED =1 << GetPortKey();
+                 }
+     }                                                                           
