@@ -1,5 +1,6 @@
 # mfc
-void CCalculatorDlg::OnBnClickedButton1()
+#계산기 
+void CCalculatorDlg :: OnBnClickedButton1 ()
 {
    CString title;
    GetDlgItemText(IDC_EDIT1, title);
