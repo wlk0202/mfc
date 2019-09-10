@@ -1,0 +1,20 @@
+<pen>
+대화상자 기반
+
+속성에서 메시지-> WM_MOUSEMOVE 클릭 onmousemove로 전환
+ 
+CPoint pnt;//cpoint 변수
+void CpenDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	if (nFlags == MK_LBUTTON) {
+		CClientDC dc(this);
+                      CPen pen(PS_SOLID, 16, RGB(0, 255, 0));//펜의 색깔(스타일,크기,색상
+                      dc.SelectObject(&pen); 
+		dc.MoveTo(pnt);
+		dc.LineTo(point);
+	}
+	pnt = point;
+	CDialogEx::OnMouseMove(nFlags, point);
+}
+
+카페:https://cafe.naver.com/whatisc
